@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Pilar Gómez · Wedding Planner y coordinadora de bodas en España. Planificación completa, coordinación Día B, y coordinadora oficial de Finca Vistas Reales.">
+<title>La Maldita Boda</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+
+<style>
+/* ── TOKENS ── */
+:root {
+  --bg:     #F6F3EE;
+  --bg2:    #EDEAE1;
+  --text:   #111111;
+  --text2:  #7A6E63;
+  --accent: #9A856C;
+  --border: #DEDAD3;
+  --dk:     #0D0C0A;
+  --dkt:    #EDE9E2;
+  --dkm:    #625C54;
+  --f: "Helvetica Neue", Helvetica, "DM Sans", Arial, sans-serif;
+  --ease: cubic-bezier(.25,0,.1,1);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D0C0A; --bg2:#161410; --text:#EDE9E2; --text2:#8A837A;
+    --accent:#B89A78; --border:#2A2720; --dkt:#EDE9E2; --dkm:#625C54;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D0C0A; --bg2:#161410; --text:#EDE9E2; --text2:#8A837A;
+  --accent:#B89A78; --border:#2A2720; --dkt:#EDE9E2; --dkm:#625C54;
+}
+
+/* ── BASE ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--f);font-size:16px;line-height:1.65;color:var(--text);background:var(--bg);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;font-family:inherit;border:none;background:none}
+
+/* ── LAYOUT ── */
+.w{max-width:1200px;margin:0 auto;padding-inline:48px}
+.ws{max-width:800px;margin:0 auto;padding-inline:48px}
+
+/* ── SCROLL ANIMATIONS ── */
+.fu{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.fu.in{opacity:1;transform:translateY(0)}
+.fu2{opacity:0;transform:translateY(20px);transition:opacity .7s .12s var(--ease),transform .7s .12s var(--ease)}
+.fu2.in{opacity:1;transform:translateY(0)}
+.fu3{opacity:0;transform:translateY(20px);transition:opacity .7s .24s var(--ease),transform .7s .24s var(--ease)}
+.fu3.in{opacity:1;transform:translateY(0)}
+
+/* ── HEADER ── */
+.hdr{
+  position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:200;
+  height:58px;padding-inline:48px;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .4s,border-color .4s;
+  border-bottom:1px solid transparent;
+}
+.hdr.solid{background:var(--bg);border-bottom-color:var(--border)}
+.hdr.on-hero{background:transparent;border-bottom-color:transparent}
+
+.logo{
+  font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  cursor:pointer;color:var(--dkt);transition:color .2s;
+}
+.hdr.solid .logo{color:var(--text)}
+
+.nav{display:flex;gap:0;list-style:none}
+.nav li a{
+  display:block;padding:8px 18px;
+  font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--dkm);cursor:pointer;
+  position:relative;transition:color .2s;
+}
+.hdr.solid .nav li a{color:var(--text2)}
+.nav li a::after{
+  content:'';position:absolute;bottom:2px;left:18px;right:18px;height:1px;
+  background:currentColor;transform:scaleX(0);transform-origin:left;
+  transition:transform .25s var(--ease);
+}
+.nav li a:hover,.nav li a.act{color:var(--dkt)}
+.hdr.solid .nav li a:hover,.hdr.solid .nav li a.act{color:var(--text)}
+.nav li a:hover::after,.nav li a.act::after{transform:scaleX(1)}
+
+.hdr-right{display:flex;align-items:center;gap:20px}
+
+/* ── BUTTONS ── */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--f);font-size:11px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;cursor:pointer;border-radius:0;
+  transition:all .22s var(--ease);
+}
+.btn-solid{
+  padding:11px 26px;background:var(--dkt);color:var(--dk);border:1px solid var(--dkt);
+}
+.btn-solid .arr{transition:transform .22s var(--ease)}
+.btn-solid:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn-solid:hover .arr{transform:translateX(4px)}
+.hdr.solid .btn-solid{background:var(--text);color:var(--bg);border-color:var(--text)}
+.hdr.solid .btn-solid:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.btn-line{
+  padding:11px 0;background:none;border:none;
+  border-bottom:1px solid rgba(255,255,255,.35);color:var(--dkm);
+}
+.btn-line .arr{transition:transform .22s var(--ease)}
+.btn-line:hover{color:var(--dkt);border-bottom-color:var(--dkt)}
+.btn-line:hover .arr{transform:translateX(4px)}
+
+.btn-text{
+  padding:10px 0;border-bottom:1px solid var(--border);color:var(--text2);
+}
+.btn-text .arr{transition:transform .22s var(--ease)}
+.btn-text:hover{color:var(--text);border-bottom-color:var(--text)}
+.btn-text:hover .arr{transform:translateX(4px)}
+
+/* HAMBURGER */
+.hbg{display:none;width:44px;height:44px;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.hbg span{display:block;width:20px;height:1.5px;background:var(--dkt);transition:all .28s}
+.hdr.solid .hbg span{background:var(--text)}
+.hbg.open span:nth-child(1){transform:rotate(45deg) translate(5.5px,5.5px)}
+.hbg.open span:nth-child(2){opacity:0}
+.hbg.open span:nth-child(3){transform:rotate(-45deg) translate(5.5px,-5.5px)}
+
+/* ── MOBILE NAV ── */
+.mnav{
+  position:fixed;inset:0;z-index:199;
+  background:var(--bg);
+  display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+  padding:80px 48px;gap:8px;
+  transform:translateX(100%);visibility:hidden;pointer-events:none;
+  transition:transform .38s var(--ease),visibility 0s .38s;
+}
+.mnav.open{transform:translateX(0);visibility:visible;pointer-events:auto;transition:transform .38s var(--ease),visibility 0s}
+.mnav a{
+  font-size:clamp(28px,6vw,44px);font-weight:700;letter-spacing:-.03em;
+  cursor:pointer;color:var(--text);padding:8px 0;
+  transition:color .2s;display:block;
+}
+.mnav a:hover{color:var(--accent)}
+.mnav-sub{margin-top:32px;display:flex;flex-direction:column;gap:12px}
+.mnav-sub a{font-size:13px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);font-size:12px}
+.mnav-close{position:absolute;top:14px;right:40px;font-size:24px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text2)}
+
+/* ── PAGES ── */
+.page{display:none;padding-top:58px}
+.page.act{display:block}
+
+/* ============ HOME ============ */
+
+/* HERO */
+.hero{
+  min-height:calc(100svh - 58px);
+  background:var(--dk);
+  display:grid;grid-template-columns:54% 46%;
+  position:relative;overflow:hidden;
+}
+.hero-copy{
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding-bottom:72px;padding-top:72px;
+  padding-left:max(48px,calc((100vw - 1200px)/2 + 48px));
+  padding-right:52px;
+}
+.hero-tag{font-size:10px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--dkm);margin-bottom:36px}
+.hero-h{
+  font-size:clamp(40px,5vw,70px);font-weight:700;
+  letter-spacing:-.04em;line-height:.96;
+  color:var(--dkt);margin-bottom:24px;text-wrap:balance;
+}
+.hero-p{font-size:16px;font-weight:300;line-height:1.68;color:var(--dkm);max-width:390px;margin-bottom:48px}
+.hero-acts{display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+.hero-scroll{
+  position:absolute;bottom:28px;
+  left:max(48px,calc((100vw - 1200px)/2 + 48px));
+  display:flex;align-items:center;gap:14px;
+  font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dkm);
+}
+.hero-scroll::before{content:'';width:32px;height:1px;background:var(--dkm);display:block}
+
+/* HERO IMAGE */
+.hero-img{position:relative;overflow:hidden}
+.hero-img-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 45% 28%,rgba(240,180,80,.28) 0%,transparent 55%),
+    radial-gradient(ellipse at 80% 75%,rgba(10,5,2,.6) 0%,transparent 55%),
+    radial-gradient(ellipse at 20% 80%,rgba(10,5,2,.4) 0%,transparent 45%),
+    linear-gradient(165deg,#1A0C06 0%,#3A1E0A 12%,#5E3018 22%,#8A4A20 32%,#B06828 40%,#C8882E 48%,#E0A838 55%,#D09430 63%,#A87028 72%,#784818 82%,#441E08 92%,#1A0A04 100%);
+}
+.hero-img-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 55% 50%,transparent 30%,rgba(5,3,1,.6) 100%)}
+.hero-edge{position:absolute;left:0;top:0;bottom:0;width:120px;background:linear-gradient(to right,var(--dk) 0%,transparent 100%);z-index:2}
+
+/* ── MANIFESTO BAND ── */
+.manifesto{
+  padding:68px 0;
+  border-bottom:1px solid var(--border);
+  overflow:hidden;
+}
+.manifesto .w{
+  display:grid;grid-template-columns:280px 1fr;gap:60px;align-items:center;
+}
+.manifesto-nums{
+  display:flex;flex-direction:column;gap:0;
+  border-left:2px solid var(--accent);padding-left:28px;
+}
+.mnum{
+  padding:18px 0;border-bottom:1px solid var(--border);
+}
+.mnum:last-child{border-bottom:none}
+.mnum-v{
+  font-size:clamp(38px,4.5vw,58px);font-weight:700;letter-spacing:-.04em;
+  line-height:1;color:var(--text);font-variant-numeric:tabular-nums;
+}
+.mnum-l{font-size:10.5px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--text2);margin-top:4px}
+.manifesto-text{}
+.manifesto-q{
+  font-size:clamp(22px,2.8vw,34px);font-weight:300;
+  letter-spacing:-.02em;line-height:1.35;color:var(--text);
+  margin-bottom:24px;text-wrap:balance;
+}
+.manifesto-q em{font-style:italic;color:var(--accent)}
+.manifesto-body{font-size:15.5px;font-weight:300;line-height:1.72;color:var(--text2);max-width:500px}
+
+/* ── SERVICE LIST ── */
+.svc-sec{padding-block:100px 0}
+.svc-sec .w{margin-bottom:56px}
+.svc-header{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end}
+.sec-label{font-size:10px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:16px}
+.sec-title{font-size:clamp(30px,3.5vw,48px);font-weight:700;letter-spacing:-.035em;line-height:1.05;text-wrap:balance}
+.sec-body{font-size:16px;font-weight:300;line-height:1.72;color:var(--text2)}
+.svc-rows{border-top:1px solid var(--border)}
+.svc-row{
+  display:grid;grid-template-columns:52px 1fr 1.2fr 36px;
+  align-items:center;padding:26px 48px;
+  border-bottom:1px solid var(--border);cursor:pointer;
+  transition:background .18s;position:relative;
+}
+.svc-row::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:0;
+  background:var(--accent);transition:width .22s var(--ease);
+}
+.svc-row:hover{background:var(--bg2)}
+.svc-row:hover::before{width:2px}
+.svc-n{font-size:10.5px;font-weight:400;color:var(--accent);letter-spacing:.08em}
+.svc-name{font-size:clamp(15px,1.8vw,19px);font-weight:700;letter-spacing:-.02em}
+.svc-tag{font-size:13.5px;font-weight:300;color:var(--text2)}
+.svc-arr{font-size:16px;color:var(--border);text-align:right;transition:color .2s,transform .22s var(--ease)}
+.svc-row:hover .svc-arr{color:var(--accent);transform:translateX(4px)}
+
+/* ── QUOTE / DARK BREAK ── */
+.quote-sec{padding-block:110px;background:var(--dk)}
+.quote-sec .ws{text-align:center}
+.quote-q{
+  font-size:clamp(20px,2.8vw,36px);font-weight:300;font-style:italic;
+  letter-spacing:-.015em;line-height:1.4;color:var(--dkt);
+  margin-bottom:20px;
+}
+.quote-a{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--dkm)}
+
+/* ── PORTFOLIO HOME ── */
+.port-home{padding-block:100px}
+.port-home .w{margin-bottom:52px;display:flex;align-items:flex-end;justify-content:space-between}
+.port-home-grid{
+  display:grid;
+  grid-template-columns:1.6fr 1fr 1fr;
+  grid-template-rows:290px 240px;
+  gap:3px;
+}
+.pi{position:relative;overflow:hidden;cursor:pointer}
+.pi:first-child{grid-row:span 2}
+.pi-bg{
+  width:100%;height:100%;
+  transition:transform .6s var(--ease);
+}
+.pi:hover .pi-bg{transform:scale(1.05)}
+.pi-over{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 55%);
+  display:flex;align-items:flex-end;padding:20px 22px;
+  opacity:0;transition:opacity .3s;
+}
+.pi:hover .pi-over{opacity:1}
+.pi-name{font-size:14px;font-weight:700;color:#fff;margin-bottom:2px}
+.pi-loc{font-size:11px;color:rgba(255,255,255,.7);letter-spacing:.04em}
+
+/* ── BIG CTA ── */
+.cta-sec{
+  padding-block:110px;
+  text-align:center;border-top:1px solid var(--border);
+}
+.cta-big{
+  display:inline-block;
+  font-size:clamp(52px,9vw,130px);font-weight:700;
+  letter-spacing:-.05em;line-height:.92;
+  color:var(--text);margin-bottom:44px;
+  cursor:pointer;transition:color .25s;
+}
+.cta-big:hover{color:var(--accent)}
+.cta-sub{font-size:16px;font-weight:300;color:var(--text2);margin-bottom:36px;max-width:420px;margin-inline:auto;display:block}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-dark-solid{
+  padding:13px 30px;background:var(--text);color:var(--bg);
+  font-family:var(--f);font-size:11px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;border:1px solid var(--text);cursor:pointer;
+  transition:all .2s;display:inline-flex;align-items:center;gap:10px;
+}
+.btn-dark-solid .arr{transition:transform .2s var(--ease)}
+.btn-dark-solid:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn-dark-solid:hover .arr{transform:translateX(4px)}
+
+/* ============ SERVICES PAGE ============ */
+.pg-intro{padding-block:96px 0;border-bottom:1px solid var(--border)}
+.pg-intro .w{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;
+  padding-bottom:64px;
+}
+.pg-title{
+  font-size:clamp(52px,7.5vw,104px);font-weight:700;
+  letter-spacing:-.05em;line-height:.87;
+}
+.svc-panels{}
+.svc-panel{
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:520px;border-bottom:1px solid var(--border);
+}
+.svc-panel:nth-child(even){direction:rtl}
+.svc-panel:nth-child(even)>*{direction:ltr}
+.sp-copy{
+  padding:72px 60px;display:flex;flex-direction:column;justify-content:center;
+}
+.sp-copy.pad-l{padding-left:max(48px,calc((100vw - 1200px)/2 + 48px))}
+.sp-num{font-size:10.5px;font-weight:400;color:var(--accent);letter-spacing:.1em;margin-bottom:20px}
+.sp-name{
+  font-size:clamp(24px,3vw,40px);font-weight:700;letter-spacing:-.03em;
+  line-height:1.05;margin-bottom:24px;
+}
+.sp-body{font-size:15px;font-weight:300;line-height:1.75;color:var(--text2)}
+.sp-body p{margin-bottom:14px}
+.sp-body p:last-child{margin-bottom:0}
+.sp-note{margin-top:28px;display:inline-flex;align-items:center;gap:10px;font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.sp-note::before{content:'';width:20px;height:1px;background:var(--accent);display:block}
+.sp-img{position:relative;overflow:hidden;min-height:360px}
+.sp-img-bg{position:absolute;inset:0;transition:transform .7s var(--ease)}
+.svc-panel:hover .sp-img-bg{transform:scale(1.04)}
+.sp-img-overlay{position:absolute;inset:0;background:rgba(0,0,0,.12)}
+
+/* ============ PORTFOLIO PAGE ============ */
+.pg-port-intro{padding-block:96px 0;border-bottom:1px solid var(--border)}
+.pg-port-intro .w{padding-bottom:64px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end}
+.port-full-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding-top:3px;
+}
+.ppi{position:relative;overflow:hidden;cursor:pointer}
+.ppi-bg{aspect-ratio:3/4;width:100%;display:block;transition:transform .55s var(--ease)}
+.ppi:hover .ppi-bg{transform:scale(1.04)}
+.ppi-over{
+  position:absolute;inset:0;
+  background:rgba(0,0,0,0);display:flex;align-items:flex-end;padding:22px;
+  transition:background .3s;
+}
+.ppi:hover .ppi-over{background:rgba(0,0,0,.35)}
+.ppi-cap{color:#fff;opacity:0;transform:translateY(8px);transition:all .3s}
+.ppi:hover .ppi-cap{opacity:1;transform:translateY(0)}
+.ppi-cap-name{font-size:14px;font-weight:700;margin-bottom:2px}
+.ppi-cap-loc{font-size:11px;opacity:.75;letter-spacing:.04em}
+
+/* ============ ABOUT PAGE ============ */
+.about-top{padding-block:96px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.about-photo{position:relative}
+.about-photo-img{aspect-ratio:4/5;width:100%;display:block}
+.about-photo-caption{
+  position:absolute;bottom:-20px;right:-20px;
+  background:var(--dk);color:var(--dkt);
+  padding:16px 20px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+}
+.about-title{font-size:clamp(28px,3.5vw,46px);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin-bottom:28px;text-wrap:balance}
+.about-p{font-size:16.5px;font-weight:300;line-height:1.75;color:var(--text2);margin-bottom:20px}
+.about-highlights{
+  margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:var(--border);border:1px solid var(--border);
+}
+.ahl{padding:28px 24px;background:var(--bg)}
+.ahl-n{font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.ahl-v{font-size:15px;font-weight:400;line-height:1.5;color:var(--text)}
+
+/* Second about section: full-width dark photo */
+.about-full{
+  position:relative;overflow:hidden;min-height:480px;
+  display:flex;align-items:center;
+}
+.about-full-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 30% 40%,rgba(200,150,60,.22) 0%,transparent 55%),
+    radial-gradient(ellipse at 80% 70%,rgba(5,3,1,.7) 0%,transparent 55%),
+    linear-gradient(150deg,#1A0E08 0%,#3D2010 20%,#6A3818 38%,#9A5820 52%,#C07830 62%,#D89038 70%,#A86820 82%,#5A3210 94%,#1A0A04 100%);
+}
+.about-full-vignette{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.7) 0%,rgba(0,0,0,.2) 50%,rgba(0,0,0,.6) 100%)}
+.about-full-text{position:relative;z-index:1;padding:80px max(48px,calc((100vw - 1200px)/2 + 48px));max-width:680px}
+.about-full-q{font-size:clamp(22px,2.8vw,36px);font-weight:300;font-style:italic;letter-spacing:-.01em;line-height:1.4;color:var(--dkt);margin-bottom:16px}
+.about-full-a{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dkm)}
+
+/* ============ CONTACT PAGE ============ */
+.contact-top{padding-block:96px;display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:start}
+.contact-sticky{position:sticky;top:90px}
+.contact-title{font-size:clamp(44px,6vw,84px);font-weight:700;letter-spacing:-.05em;line-height:.9;margin-bottom:28px}
+.contact-p{font-size:16.5px;font-weight:300;color:var(--text2);line-height:1.7;margin-bottom:40px}
+.cdets{display:flex;flex-direction:column;gap:24px}
+.cdet-l{font-size:9.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.cdet-v{font-size:15.5px;color:var(--text)}
+
+/* FORM */
+.cform{display:flex;flex-direction:column;gap:24px}
+.fg{display:flex;flex-direction:column;gap:7px}
+.fg label{font-size:9.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--text2)}
+.fg input,.fg select,.fg textarea{
+  font-family:var(--f);font-size:15px;
+  padding:12px 0;border:none;border-bottom:1px solid var(--border);
+  background:transparent;color:var(--text);outline:none;
+  transition:border-color .2s;width:100%;-webkit-appearance:none;border-radius:0;
+}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--border)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-bottom-color:var(--text)}
+.fg textarea{resize:none;min-height:110px}
+.fg select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239A856C'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 4px center;padding-right:20px}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.fsub{
+  padding:14px 32px;background:var(--text);color:var(--bg);
+  font-family:var(--f);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid var(--text);cursor:pointer;transition:all .2s;
+  display:inline-flex;align-items:center;gap:10px;align-self:flex-start;
+}
+.fsub .arr{transition:transform .2s var(--ease)}
+.fsub:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.fsub:hover .arr{transform:translateX(4px)}
+.fsuccess{display:none;padding:48px;border-top:2px solid var(--accent);text-align:center}
+.fsuccess.show{display:block}
+.fsuccess h3{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-bottom:10px}
+.fsuccess p{color:var(--text2);font-weight:300;font-size:15.5px}
+
+/* ── FOOTER ── */
+.ftr{border-top:1px solid var(--border);padding-block:40px}
+.ftr .w{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.ftr-logo{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.ftr-nav{display:flex;gap:24px;list-style:none}
+.ftr-nav a{font-size:11px;color:var(--text2);cursor:pointer;letter-spacing:.06em;transition:color .2s}
+.ftr-nav a:hover{color:var(--text)}
+.ftr-copy{font-size:11px;color:var(--text2)}
+
+/* ── IMG GRADIENTS ── */
+.ph{display:block}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .w,.ws{padding-inline:24px}
+  .hdr{padding-inline:24px}
+  .nav{display:none}.hbg{display:flex}
+  .hdr-right .btn-solid{display:none}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-copy{padding:56px 24px;order:2}
+  .hero-img{height:52svh;order:1}.hero-edge,.hero-scroll{display:none}
+  .manifesto .w{grid-template-columns:1fr;gap:36px}
+  .manifesto-nums{flex-direction:row;border-left:none;border-top:2px solid var(--accent);padding-left:0;padding-top:20px;gap:0}
+  .mnum{padding:0 28px 0 0;border-bottom:none}
+  .mnum:last-child{padding-right:0}
+  .svc-header{grid-template-columns:1fr;gap:20px}
+  .svc-row{grid-template-columns:40px 1fr 28px;padding:22px 24px}
+  .svc-tag{display:none}
+  .pg-intro .w{grid-template-columns:1fr;gap:24px;padding-bottom:40px}
+  .svc-panel{grid-template-columns:1fr;min-height:auto;direction:ltr!important}
+  .svc-panel:nth-child(even){direction:ltr}
+  .sp-copy{padding:48px 24px}.sp-copy.pad-l{padding-left:24px}
+  .sp-img{min-height:280px;order:-1}
+  .pg-port-intro .w{grid-template-columns:1fr;gap:24px;padding-bottom:40px}
+  .port-full-grid{grid-template-columns:1fr 1fr}
+  .about-top{grid-template-columns:1fr;gap:48px;padding-block:60px}
+  .about-highlights{grid-template-columns:1fr}
+  .about-photo-caption{display:none}
+  .contact-top{grid-template-columns:1fr;gap:48px;padding-block:60px}
+  .contact-sticky{position:static}
+  .fg-row{grid-template-columns:1fr}
+  .port-home-grid{grid-template-columns:1fr 1fr;grid-template-rows:240px 200px}
+  .pi:first-child{grid-row:span 2}
+  .ftr .w{flex-direction:column;align-items:flex-start;gap:12px}
+  .mnav{padding:80px 32px}
+}
+@media(max-width:560px){
+  .port-full-grid{grid-template-columns:1fr}
+  .port-home-grid{grid-template-columns:1fr;grid-template-rows:auto}
+  .pi:first-child{grid-row:span 1}
+  .cta-big{font-size:clamp(44px,13vw,130px)}
+  .about-highlights{grid-template-columns:1fr 1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:0ms!important;animation-duration:0ms!important}
+  .fu,.fu2,.fu3{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr on-hero" id="hdr">
+  <span class="logo" onclick="nav('inicio')">La Maldita Boda</span>
+  <ul class="nav">
+    <li><a onclick="nav('servicios')" data-p="servicios">Servicios</a></li>
+    <li><a onclick="nav('portfolio')" data-p="portfolio">Portfolio</a></li>
+    <li><a onclick="nav('sobre')" data-p="sobre">Sobre mí</a></li>
+    <li><a onclick="nav('contacto')" data-p="contacto">Contacto</a></li>
+  </ul>
+  <div class="hdr-right">
+    <button class="btn btn-solid" onclick="nav('contacto')">Contactar <span class="arr">→</span></button>
+    <button class="hbg" id="hbg" onclick="toggleMenu()" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<nav class="mnav" id="mnav">
+  <button class="mnav-close" onclick="toggleMenu()" aria-label="Cerrar">&#215;</button>
+  <a onclick="nav('servicios');toggleMenu()">Servicios</a>
+  <a onclick="nav('portfolio');toggleMenu()">Portfolio</a>
+  <a onclick="nav('sobre');toggleMenu()">Sobre mí</a>
+  <a onclick="nav('contacto');toggleMenu()">Contactar</a>
+</nav>
+
+<!-- ========== HOME ========== -->
+<div id="page-inicio" class="page act">
+
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="hero-tag">Pilar Gómez · Wedding Planner · España</p>
+      <h1 class="hero-h">Bodas que merecen preparación.</h1>
+      <p class="hero-p">Planificación y coordinación de bodas en España. Menos improvisación, más presencia.</p>
+      <div class="hero-acts">
+        <button class="btn-hero-p" onclick="nav('servicios')">Ver servicios <span>→</span></button>
+        <button class="btn-ghost" onclick="nav('contacto')">Contactar</button>
+      </div>
+    </div>
+    <div class="hero-img" aria-hidden="true">
+      <div class="hero-img-bg"></div>
+      <div class="hero-img-vignette"></div>
+      <div class="hero-edge"></div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">Descubrir</div>
+  </section>
+  <style>
+  .btn-hero-p{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:13px 28px;background:var(--dkt);color:var(--dk);
+    font-family:var(--f);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+    border:1px solid var(--dkt);cursor:pointer;transition:all .22s;
+  }
+  .btn-hero-p span{transition:transform .22s var(--ease)}
+  .btn-hero-p:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+  .btn-hero-p:hover span{transform:translateX(4px)}
+  .btn-ghost{
+    display:inline-flex;align-items:center;
+    padding:13px 0;font-family:var(--f);font-size:11px;font-weight:400;
+    letter-spacing:.14em;text-transform:uppercase;
+    color:var(--dkm);border-bottom:1px solid var(--dkm);background:none;
+    border-top:none;border-left:none;border-right:none;cursor:pointer;
+    transition:color .2s,border-color .2s;
+  }
+  .btn-ghost:hover{color:var(--dkt);border-bottom-color:var(--dkt)}
+  </style>
+
+  <!-- MANIFESTO / STATS -->
+  <section class="manifesto fu">
+    <div class="w">
+      <div class="manifesto-nums">
+        <div class="mnum">
+          <div class="mnum-v">+80</div>
+          <div class="mnum-l">Bodas coordinadas</div>
+        </div>
+        <div class="mnum">
+          <div class="mnum-v">7</div>
+          <div class="mnum-l">Años de experiencia</div>
+        </div>
+        <div class="mnum">
+          <div class="mnum-v">1</div>
+          <div class="mnum-l">Coordinadora por boda</div>
+        </div>
+      </div>
+      <div class="manifesto-text">
+        <p class="manifesto-q">Trabajo con un número <em>limitado</em> de parejas al año. No por estrategia, sino porque es la única manera de hacerlo bien.</p>
+        <p class="manifesto-body">Cada boda tiene su propio carácter, su propio ritmo. No existen plantillas que funcionen para todo el mundo. Lo que sí existe es una profesional que se implica desde el principio y que estará ahí cuando lo necesitéis.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES LIST -->
+  <section class="svc-sec">
+    <div class="w">
+      <div class="svc-header fu">
+        <div>
+          <span class="sec-label">Servicios</span>
+          <h2 class="sec-title">Lo que hago,<br>y cómo lo hago.</h2>
+        </div>
+        <p class="sec-body fu2">Desde la planificación completa hasta la decoración de un rincón. Todo con el mismo nivel de detalle.</p>
+      </div>
+    </div>
+    <div class="svc-rows">
+      <div class="svc-row fu" onclick="nav('servicios')">
+        <span class="svc-n">01</span>
+        <span class="svc-name">Wedding Planner</span>
+        <span class="svc-tag">Gestión completa desde el principio</span>
+        <span class="svc-arr">→</span>
+      </div>
+      <div class="svc-row fu" onclick="nav('servicios')">
+        <span class="svc-n">02</span>
+        <span class="svc-name">Coordinación Día B</span>
+        <span class="svc-tag">Presente el día, invisible en los problemas</span>
+        <span class="svc-arr">→</span>
+      </div>
+      <div class="svc-row fu" onclick="nav('servicios')">
+        <span class="svc-n">03</span>
+        <span class="svc-name">Finca Vistas Reales</span>
+        <span class="svc-tag">Coordinadora oficial de la finca</span>
+        <span class="svc-arr">→</span>
+      </div>
+      <div class="svc-row fu" onclick="nav('servicios')">
+        <span class="svc-n">04</span>
+        <span class="svc-name">Pedidas de Matrimonio</span>
+        <span class="svc-tag">El momento que ella esperaba sin saberlo</span>
+        <span class="svc-arr">→</span>
+      </div>
+      <div class="svc-row fu" onclick="nav('servicios')">
+        <span class="svc-n">05</span>
+        <span class="svc-name">Rincones Deco</span>
+        <span class="svc-tag">Decoración con identidad propia</span>
+        <span class="svc-arr">→</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote-sec fu">
+    <div class="ws" style="text-align:center">
+      <p class="quote-q">"No existe el día perfecto. Existe el día bien preparado."</p>
+      <p class="quote-a">Pilar Gómez · La Maldita Boda</p>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO PREVIEW -->
+  <section class="port-home">
+    <div class="w">
+      <div class="fu">
+        <span class="sec-label">Trabajos recientes</span>
+        <h2 class="sec-title" style="margin-bottom:0">Algunas de las bodas<br>que hemos vivido juntos.</h2>
+      </div>
+      <button class="btn btn-text fu2" onclick="nav('portfolio')" style="align-self:flex-end;white-space:nowrap">Ver todo <span class="arr">→</span></button>
+    </div>
+    <div class="port-home-grid w fu" style="margin-top:48px">
+      <div class="pi">
+        <div class="pi-bg ph" style="background:radial-gradient(ellipse at 40% 30%,rgba(240,180,80,.3) 0%,transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(8,4,1,.6) 0%,transparent 55%),linear-gradient(155deg,#1A0C06,#3A1E0A,#6A3818,#A86028,#C8883A,#D09840,#9A6428,#5A3010,#1A0804);height:100%"></div>
+        <div class="pi-over"><div><div class="pi-name">María &amp; Carlos</div><div class="pi-loc">Finca Vistas Reales · Madrid</div></div></div>
+      </div>
+      <div class="pi">
+        <div class="pi-bg ph" style="background:radial-gradient(ellipse at 50% 30%,rgba(160,210,120,.2) 0%,transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(5,10,5,.5) 0%,transparent 50%),linear-gradient(155deg,#1A2E18,#2E4A20,#507035,#7A9858,#A0C078,#809858,#4A6830,#243A18);height:100%"></div>
+        <div class="pi-over"><div><div class="pi-name">Lucía &amp; Pablo</div><div class="pi-loc">Jardines de Aranjuez</div></div></div>
+      </div>
+      <div class="pi">
+        <div class="pi-bg ph" style="background:radial-gradient(ellipse at 40% 35%,rgba(200,140,60,.25) 0%,transparent 50%),radial-gradient(ellipse at 80% 75%,rgba(8,4,2,.55) 0%,transparent 50%),linear-gradient(155deg,#1C1008,#3A2010,#6A3818,#985028,#B87038,#C88840,#986030,#5A3010,#1A0C06);height:100%"></div>
+        <div class="pi-over"><div><div class="pi-name">Elena &amp; Marcos</div><div class="pi-loc">Hacienda La Señora · Sevilla</div></div></div>
+      </div>
+      <div class="pi">
+        <div class="pi-bg ph" style="background:radial-gradient(ellipse at 40% 35%,rgba(120,170,200,.2) 0%,transparent 50%),radial-gradient(ellipse at 80% 75%,rgba(5,8,12,.5) 0%,transparent 50%),linear-gradient(155deg,#141828,#263048,#405870,#607898,#8098B8,#6080A0,#405870,#243050);height:100%"></div>
+        <div class="pi-over"><div><div class="pi-name">Ana &amp; Javier</div><div class="pi-loc">Bodega Torre del Marqués</div></div></div>
+      </div>
+      <div class="pi">
+        <div class="pi-bg ph" style="background:radial-gradient(ellipse at 40% 30%,rgba(200,130,160,.2) 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(8,4,6,.6) 0%,transparent 50%),linear-gradient(155deg,#160C14,#2E1828,#5A3050,#885070,#A87090,#987080,#6A4060,#3A2040);height:100%"></div>
+        <div class="pi-over"><div><div class="pi-name">Cristina &amp; Luis</div><div class="pi-loc">Villa Mediterránea · Alicante</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIG CTA -->
+  <section class="cta-sec fu">
+    <span class="sec-label" style="display:block;margin-bottom:28px">¿Empezamos?</span>
+    <span class="cta-big" onclick="nav('contacto')">¿Hablemos?</span>
+    <span class="cta-sub">Cuéntame cómo imagináis vuestra boda. Respondo en 48 horas.</span>
+    <div class="cta-btns">
+      <button class="btn-dark-solid" onclick="nav('contacto')">Escribir un mensaje <span class="arr">→</span></button>
+    </div>
+  </section>
+
+</div><!-- /inicio -->
+
+<!-- ========== SERVICIOS ========== -->
+<div id="page-servicios" class="page">
+  <div class="pg-intro">
+    <div class="w">
+      <div class="fu">
+        <span class="sec-label">Servicios</span>
+        <h1 class="pg-title">Servicios</h1>
+      </div>
+      <p class="sec-body fu2" style="max-width:440px">Cada proyecto es diferente. Lo que ofrezco se adapta a lo que realmente necesitáis.</p>
+    </div>
+  </div>
+
+  <div class="svc-panels">
+
+    <div class="svc-panel fu">
+      <div class="sp-copy pad-l">
+        <div class="sp-num">01 · Wedding Planner</div>
+        <h2 class="sp-name">Gestión completa de vuestra boda.</h2>
+        <div class="sp-body">
+          <p>Me encargo de todo: búsqueda y negociación con proveedores, presupuestos, cronograma, coordinación logística y los detalles que no deberías tener que gestionar vosotros.</p>
+          <p>Trabajo de forma cercana con cada pareja para que el resultado sea una boda que refleje quiénes son, no una plantilla.</p>
+          <p>Disponible para bodas en toda España, con especial presencia en Madrid y Castilla-La Mancha.</p>
+        </div>
+        <span class="sp-note">Consulta de disponibilidad</span>
+      </div>
+      <div class="sp-img">
+        <div class="sp-img-bg" style="position:absolute;inset:0;background:radial-gradient(ellipse at 40% 30%,rgba(240,180,80,.3) 0%,transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(8,4,1,.6) 0%,transparent 55%),linear-gradient(155deg,#1A0C06,#3A1E0A,#6A3818,#A86028,#C8883A,#D09840,#9A6428,#5A3010)"></div>
+        <div class="sp-img-overlay"></div>
+      </div>
+    </div>
+
+    <div class="svc-panel fu">
+      <div class="sp-img">
+        <div class="sp-img-bg" style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(160,210,120,.2) 0%,transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(5,10,5,.5) 0%,transparent 50%),linear-gradient(155deg,#1A2E18,#2E4A20,#507035,#7A9858,#A0C078,#809858,#4A6830)"></div>
+        <div class="sp-img-overlay"></div>
+      </div>
+      <div class="sp-copy" style="padding-right:max(48px,calc((100vw - 1200px)/2 + 48px));padding-left:60px">
+        <div class="sp-num">02 · Coordinación Día B</div>
+        <h2 class="sp-name">Presente el día. Invisible en los problemas.</h2>
+        <div class="sp-body">
+          <p>Tenéis la organización lista pero necesitáis a alguien de confianza el día de la boda. Me integro con todo lo que ya habéis preparado.</p>
+          <p>Reviso proveedores y cronograma en las semanas previas, estoy presente durante toda la jornada y gestiono cualquier imprevisto antes de que vosotros lo notéis.</p>
+          <p>Mi trabajo es que no notéis mi presencia en ningún momento difícil. Solo en los buenos.</p>
+        </div>
+        <span class="sp-note">Disponible en toda España</span>
+      </div>
+    </div>
+
+    <div class="svc-panel fu">
+      <div class="sp-copy pad-l">
+        <div class="sp-num">03 · Finca Vistas Reales</div>
+        <h2 class="sp-name">Coordinadora oficial de Finca Vistas Reales.</h2>
+        <div class="sp-body">
+          <p>Conozco cada rincón de Finca Vistas Reales, sus posibilidades, sus tiempos y sus proveedores. Si vuestra boda es aquí, no hay nadie mejor para sacarle el máximo partido al espacio.</p>
+          <p>Incluye coordinación completa el día de la boda y asesoramiento previo sobre el espacio, la logística y los proveedores recomendados.</p>
+        </div>
+        <span class="sp-note">Madrid · Finca Vistas Reales</span>
+      </div>
+      <div class="sp-img">
+        <div class="sp-img-bg" style="position:absolute;inset:0;background:radial-gradient(ellipse at 40% 30%,rgba(200,170,80,.25) 0%,transparent 50%),radial-gradient(ellipse at 80% 75%,rgba(8,5,2,.55) 0%,transparent 50%),linear-gradient(155deg,#201808,#402E10,#6A4E18,#9A7028,#C09038,#D8A840,#A07828,#5A4010)"></div>
+        <div class="sp-img-overlay"></div>
+      </div>
+    </div>
+
+    <div class="svc-panel fu">
+      <div class="sp-img">
+        <div class="sp-img-bg" style="position:absolute;inset:0;background:radial-gradient(ellipse at 40% 30%,rgba(200,130,160,.22) 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(8,4,6,.6) 0%,transparent 50%),linear-gradient(155deg,#160C14,#2E1828,#5A3050,#885070,#A87090,#987080,#6A4060)"></div>
+        <div class="sp-img-overlay"></div>
+      </div>
+      <div class="sp-copy" style="padding-right:max(48px,calc((100vw - 1200px)/2 + 48px));padding-left:60px">
+        <div class="sp-num">04 · Pedidas de Matrimonio</div>
+        <h2 class="sp-name">El momento que ella esperaba sin saberlo.</h2>
+        <div class="sp-body">
+          <p>Una propuesta de matrimonio memorable requiere el mismo cuidado que la boda misma. Diseño el concepto, gestiono la decoración y coordino a todos los colaboradores necesarios.</p>
+          <p>Discreción absoluta. Logística invisible. El protagonismo es vuestro.</p>
+        </div>
+        <span class="sp-note">Consulta personalizada</span>
+      </div>
+    </div>
+
+    <div class="svc-panel fu" style="border-bottom:1px solid var(--border)">
+      <div class="sp-copy pad-l">
+        <div class="sp-num">05 · Rincones Deco</div>
+        <h2 class="sp-name">Decoración con identidad propia.</h2>
+        <div class="sp-body">
+          <p>Photocalls, mesas de dulces, rincones temáticos, instalaciones florales. Creados a medida, no sacados de catálogo.</p>
+          <p>Disponibles como servicio independiente o como parte de cualquier otro servicio de coordinación.</p>
+        </div>
+        <span class="sp-note">Disponibilidad a consultar</span>
+      </div>
+      <div class="sp-img">
+        <div class="sp-img-bg" style="position:absolute;inset:0;background:radial-gradient(ellipse at 45% 35%,rgba(160,200,140,.2) 0%,transparent 50%),radial-gradient(ellipse at 80% 75%,rgba(5,8,4,.5) 0%,transparent 50%),linear-gradient(155deg,#101E10,#203020,#3A5030,#5A7048,#7A9068,#607848,#3A5028)"></div>
+        <div class="sp-img-overlay"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <section class="cta-sec fu">
+    <span class="cta-sub">¿Alguno de estos servicios encaja con lo que buscáis?</span>
+    <div class="cta-btns">
+      <button class="btn-dark-solid" onclick="nav('contacto')">Contactar <span class="arr">→</span></button>
+    </div>
+  </section>
+</div><!-- /servicios -->
+
+<!-- ========== PORTFOLIO ========== -->
+<div id="page-portfolio" class="page">
+  <div class="pg-port-intro">
+    <div class="w">
+      <div class="fu">
+        <span class="sec-label">Portfolio</span>
+        <h1 class="pg-title">Portfolio</h1>
+      </div>
+      <p class="sec-body fu2" style="max-width:440px">Cada boda tiene su carácter propio. Aquí hay algunas de las que hemos vivido juntos.</p>
+    </div>
+  </div>
+  <div class="port-full-grid">
+    <div class="ppi fu"><div class="ppi-bg ph" style="background:radial-gradient(ellipse at 40% 30%,rgba(240,180,80,.3) 0%,transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(8,4,1,.6) 0%,transparent 55%),linear-gradient(155deg,#1A0C06,#3A1E0A,#6A3818,#A86028,#C8883A,#D09840,#9A6428,#5A3010)"></div><div class="ppi-over"><div class="ppi-cap"><div class="ppi-cap-name">María &amp; Carlos</div><div class="ppi-cap-loc">Finca Vistas Reales · Madrid</div></div></div></div>
+    <div class="ppi fu"><div class="ppi-bg ph" style="background:radial-gradient(ellipse at 50% 30%,rgba(160,210,120,.2) 0%,transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(5,10,5,.5) 0%,transparent 50%),linear-gradient(155deg,#1A2E18,#2E4A20,#507035,#7A9858,#A0C078,#809858,#4A6830)"></div><div class="ppi-over"><div class="ppi-cap"><div class="ppi-cap-name">Lucía &amp; Pablo</div><div class="ppi-cap-loc">Jardines de Aranjuez</div></div></div></div>
+    <div class="ppi fu"><div class="ppi-bg ph" style="background:radial-gradient(ellipse at 40% 30%,rgba(200,140,60,.25) 0%,transparent 50%),radial-gradient(ellipse at 80% 75%,rgba(8,4,2,.55) 0%,transparent 50%),linear-gradient(155deg,#1C1008,#3A2010,#6A3818,#985028,#B87038,#C88840,#986030,#5A3010)"></div><div class="ppi-over"><div class="ppi-cap"><div class="ppi-cap-name">Elena &amp; Marcos</div><div class="ppi-cap-loc">Hacienda La Señora · Sevilla</div></div></div></div>
+    <div class="ppi fu"><div class="ppi-bg ph" style="background:radial-gradient(ellipse at 40% 35%,rgba(120,170,200,.2) 0%,transparent 50%),radial-gradient(ellipse at 80% 75%,rgba(5,8,12,.5) 0%,transparent 50%),linear-gradient(155deg,#141828,#263048,#405870,#607898,#8098B8,#6080A0,#405870)"></div><div class="ppi-over"><div class="ppi-cap"><div class="ppi-cap-name">Ana &amp; Javier</div><div class="ppi-cap-loc">Bodega Torre del Marqués</div></div></div></div>
+    <div class="ppi fu"><div class="ppi-bg ph" style="background:radial-gradient(ellipse at 40% 30%,rgba(200,130,160,.22) 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(8,4,6,.6) 0%,transparent 50%),linear-gradient(155deg,#160C14,#2E1828,#5A3050,#885070,#A87090,#987080,#6A4060)"></div><div class="ppi-over"><div class="ppi-cap"><div class="ppi-cap-name">Cristina &amp; Luis</div><div class="ppi-cap-loc">Villa Mediterránea · Alicante</div></div></div></div>
+    <div class="ppi fu"><div class="ppi-bg ph" style="background:radial-gradient(ellipse at 45% 35%,rgba(200,170,80,.25) 0%,transparent 50%),radial-gradient(ellipse at 80% 75%,rgba(8,5,2,.55) 0%,transparent 50%),linear-gradient(155deg,#201808,#402E10,#6A4E18,#9A7028,#C09038,#D8A840,#A07828)"></div><div class="ppi-over"><div class="ppi-cap"><div class="ppi-cap-name">Beatriz &amp; Alberto</div><div class="ppi-cap-loc">Masía El Molí · Tarragona</div></div></div></div>
+    <div class="ppi fu"><div class="ppi-bg ph" style="background:radial-gradient(ellipse at 40% 35%,rgba(140,180,140,.18) 0%,transparent 50%),radial-gradient(ellipse at 80% 75%,rgba(4,8,4,.5) 0%,transparent 50%),linear-gradient(155deg,#101E10,#1E3018,#344828,#4E6838,#688250,#527040,#344828)"></div><div class="ppi-over"><div class="ppi-cap"><div class="ppi-cap-name">Isabel &amp; Roberto</div><div class="ppi-cap-loc">Pazo de Rubianes · Galicia</div></div></div></div>
+    <div class="ppi fu"><div class="ppi-bg ph" style="background:radial-gradient(ellipse at 40% 30%,rgba(210,180,140,.2) 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(8,6,4,.55) 0%,transparent 50%),linear-gradient(155deg,#1A1610,#342C20,#584830,#7A6648,#9A8460,#7A6240,#503E20)"></div><div class="ppi-over"><div class="ppi-cap"><div class="ppi-cap-name">Sara &amp; David</div><div class="ppi-cap-loc">Palacio de Garcinarro · Toledo</div></div></div></div>
+    <div class="ppi fu"><div class="ppi-bg ph" style="background:radial-gradient(ellipse at 40% 30%,rgba(200,140,80,.22) 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(8,5,2,.6) 0%,transparent 50%),linear-gradient(155deg,#1A1008,#342018,#5A3428,#885048,#A87058,#886050,#5A3828)"></div><div class="ppi-over"><div class="ppi-cap"><div class="ppi-cap-name">Patricia &amp; Miguel</div><div class="ppi-cap-loc">Cortijo La Haza · Córdoba</div></div></div></div>
+  </div>
+  <section class="cta-sec fu">
+    <span class="cta-sub">¿Os imagináis aquí? Hablemos de vuestra boda.</span>
+    <div class="cta-btns">
+      <button class="btn-dark-solid" onclick="nav('contacto')">Contactar <span class="arr">→</span></button>
+    </div>
+  </section>
+</div><!-- /portfolio -->
+
+<!-- ========== SOBRE MÍ ========== -->
+<div id="page-sobre" class="page">
+  <div class="w">
+    <div class="about-top">
+      <div class="about-photo fu">
+        <div class="about-photo-img" style="background:radial-gradient(ellipse at 40% 30%,rgba(210,170,90,.25) 0%,transparent 55%),radial-gradient(ellipse at 75% 80%,rgba(8,5,2,.6) 0%,transparent 50%),linear-gradient(155deg,#1A1208,#342410,#5A3C18,#826028,#A07838,#B88C40,#887030,#5A4818,#2A2008)"></div>
+        <div class="about-photo-caption">Pilar Gómez · La Maldita Boda</div>
+      </div>
+      <div class="about-content fu2">
+        <span class="sec-label">Sobre mí</span>
+        <h1 class="about-title">Llevo las bodas de otras personas como si fueran las mías.</h1>
+        <p class="about-p">Soy Pilar Gómez. Trabajo como Wedding Planner desde hace más de siete años y he coordinado más de ochenta bodas en toda España.</p>
+        <p class="about-p">Empecé en este sector porque creo genuinamente que el trabajo de una coordinadora es que los novios puedan estar completamente presentes en su propio día. Sin llamadas de última hora, sin problemas que gestionar.</p>
+        <p class="about-p">Soy Coordinadora Oficial de Finca Vistas Reales y trabajo con una red de proveedores seleccionados con mucho cuidado a lo largo de los años.</p>
+        <div class="about-highlights fu3">
+          <div class="ahl">
+            <div class="ahl-n">Grupos reducidos</div>
+            <div class="ahl-v">No acepto más proyectos de los que puedo gestionar bien.</div>
+          </div>
+          <div class="ahl">
+            <div class="ahl-n">Sin plantillas</div>
+            <div class="ahl-v">Cada boda parte de cero. No existen soluciones estándar.</div>
+          </div>
+          <div class="ahl">
+            <div class="ahl-n">Transparencia</div>
+            <div class="ahl-v">Digo lo que pienso, aunque no sea lo que se quiere escuchar.</div>
+          </div>
+          <div class="ahl">
+            <div class="ahl-n">Experiencia real</div>
+            <div class="ahl-v">+80 bodas. 7 años. Coordinadora oficial en Finca Vistas Reales.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DARK PHOTO STRIP -->
+  <div class="about-full fu">
+    <div class="about-full-bg"></div>
+    <div class="about-full-vignette"></div>
+    <div class="about-full-text">
+      <p class="about-full-q">"Una boda bien coordinada no se nota. Eso es exactamente lo que busco."</p>
+      <p class="about-full-a">Pilar Gómez</p>
+    </div>
+  </div>
+
+  <section class="cta-sec fu">
+    <span class="cta-big" onclick="nav('contacto')" style="font-size:clamp(40px,6.5vw,100px)">Trabajemos juntos.</span>
+    <div class="cta-btns">
+      <button class="btn-dark-solid" onclick="nav('contacto')">Escribir un mensaje <span class="arr">→</span></button>
+    </div>
+  </section>
+</div><!-- /sobre -->
+
+<!-- ========== CONTACTO ========== -->
+<div id="page-contacto" class="page">
+  <div class="w">
+    <div class="contact-top">
+      <div class="contact-sticky fu">
+        <h1 class="contact-title">Hablemos.</h1>
+        <p class="contact-p">Cuéntame cómo imagináis vuestra boda. Sin compromiso. Si encajamos, lo notaréis desde la primera conversación.</p>
+        <div class="cdets">
+          <div>
+            <div class="cdet-l">Email</div>
+            <div class="cdet-v">info.lamalditaboda@gmail.com</div>
+          </div>
+          <div>
+            <div class="cdet-l">Instagram</div>
+            <div class="cdet-v">@lamalditaboda</div>
+          </div>
+          <div>
+            <div class="cdet-l">Respuesta</div>
+            <div class="cdet-v">En menos de 48 horas</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fu2">
+        <form class="cform" id="cform" onsubmit="submitForm(event)" novalidate>
+          <div class="fg-row">
+            <div class="fg">
+              <label for="fn">Nombre</label>
+              <input type="text" id="fn" placeholder="Vuestro nombre" required>
+            </div>
+            <div class="fg">
+              <label for="fe">Email</label>
+              <input type="email" id="fe" placeholder="vuestro@email.com" required>
+            </div>
+          </div>
+          <div class="fg-row">
+            <div class="fg">
+              <label for="ff">Fecha tentativa</label>
+              <input type="date" id="ff">
+            </div>
+            <div class="fg">
+              <label for="fs">Servicio de interés</label>
+              <select id="fs">
+                <option value="">Seleccionar...</option>
+                <option>Wedding Planner</option>
+                <option>Coordinación Día B</option>
+                <option>Finca Vistas Reales</option>
+                <option>Pedida de Matrimonio</option>
+                <option>Rincones Deco</option>
+                <option>Aún no lo sé</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg">
+            <label for="fb">Presupuesto aproximado para la boda</label>
+            <select id="fb" required>
+              <option value="">Seleccionar franja...</option>
+              <option>Menos de 15.000 €</option>
+              <option>15.000 € · 25.000 €</option>
+              <option>25.000 € · 40.000 €</option>
+              <option>40.000 € · 60.000 €</option>
+              <option>Más de 60.000 €</option>
+              <option>Prefiero comentarlo en persona</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label for="fm">Mensaje</label>
+            <textarea id="fm" placeholder="Contadme brevemente cómo imagináis vuestra boda, la fecha, el lugar si ya lo tenéis..." required></textarea>
+          </div>
+          <button type="submit" class="fsub">Enviar mensaje <span class="arr">→</span></button>
+        </form>
+        <div class="fsuccess" id="fsuccess">
+          <h3>Mensaje recibido.</h3>
+          <p>Os escribo en menos de 48 horas. Gracias por pensar en mí para vuestra boda.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /contacto -->
+
+<!-- FOOTER -->
+<footer class="ftr">
+  <div class="w">
+    <span class="ftr-logo">La Maldita Boda</span>
+    <ul class="ftr-nav">
+      <li><a onclick="nav('servicios')">Servicios</a></li>
+      <li><a onclick="nav('portfolio')">Portfolio</a></li>
+      <li><a onclick="nav('sobre')">Sobre mí</a></li>
+      <li><a onclick="nav('contacto')">Contacto</a></li>
+    </ul>
+    <span class="ftr-copy">© 2024 Pilar Gómez · info.lamalditaboda@gmail.com</span>
+  </div>
+</footer>
+</body>
+</html>
+</footer>
+
+<script>
+const HDR = document.getElementById('hdr');
+const HERO_P = ['inicio'];
+
+function nav(p) {
+  document.querySelectorAll('.page').forEach(el => el.classList.remove('act'));
+  const pg = document.getElementById('page-' + p);
+  if (pg) pg.classList.add('act');
+  document.querySelectorAll('.nav a').forEach(a => a.classList.toggle('act', a.dataset.p === p));
+  HDR.classList.toggle('on-hero', HERO_P.includes(p));
+  HDR.classList.toggle('solid', !HERO_P.includes(p));
+  window.scrollTo({top:0,behavior:'smooth'});
+  history.pushState({p}, '', '#' + p);
+  setTimeout(initAnim, 50);
+}
+
+function toggleMenu() {
+  const m = document.getElementById('mnav');
+  const b = document.getElementById('hbg');
+  const open = m.classList.toggle('open');
+  b.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+
+function submitForm(e) {
+  e.preventDefault();
+  document.getElementById('cform').style.display = 'none';
+  document.getElementById('fsuccess').classList.add('show');
+}
+
+// SCROLL ANIMATIONS
+function initAnim() {
+  const els = document.querySelectorAll('.page.act .fu, .page.act .fu2, .page.act .fu3');
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }});
+    }, {threshold: 0.08});
+    els.forEach(el => { el.classList.remove('in'); io.observe(el); });
+  } else {
+    els.forEach(el => el.classList.add('in'));
+  }
+}
+
+// HERO HEADER scroll logic
+window.addEventListener('scroll', () => {
+  const heroEl = document.querySelector('#page-inicio .hero');
+  if (heroEl && document.getElementById('page-inicio').classList.contains('act')) {
+    const past = window.scrollY > heroEl.offsetHeight - 80;
+    HDR.classList.toggle('solid', past);
+    HDR.classList.toggle('on-hero', !past);
+  }
+}, {passive:true});
+
+// Handle hash
+window.addEventListener('popstate', e => nav((e.state && e.state.p) || 'inicio'));
+(function(){
+  const h = location.hash.replace('#','');
+  if (h && document.getElementById('page-'+h)) { nav(h); } else { initAnim(); }
+})();
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && document.getElementById('mnav').classList.contains('open')) toggleMenu();
+});
+</script>
